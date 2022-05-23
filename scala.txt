@@ -1,0 +1,8 @@
+object abc{
+def main(args: Arrays[String]){
+println("hello")
+}
+}
+
+scalac abc.scala
+scala abc

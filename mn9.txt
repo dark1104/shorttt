@@ -1,0 +1,13 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+import numpy as np
+dataset = sns.load_dataset('titanic')
+dataset.head()
+cols = dataset.columns
+cols
+dataset.info()
+dataset.describe()
+dataset.isnull().sum()
+sns.boxplot(dataset['sex'] ,dataset['age'])
+sns.boxplot(dataset['sex'] ,dataset['age'],dataset['survived'])

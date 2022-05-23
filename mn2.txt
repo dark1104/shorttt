@@ -1,0 +1,31 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import preprocessing
+from scipy import stats
+df = pd.read_csv("STUDENT_PERFORMANCE.csv")
+df
+print(df['writing_score'].isna().sum())
+mean = df['writing_score'].mean();
+p_mean = df['placement_score'].mean();
+df['writing_score'].fillna(value=mean,inplace=True);
+df['placement_score'].fillna(value=p_mean,inplace=True);
+col = ['writing_score','reading_score','placement_score','placement_offer_count']
+df.boxplot(col);
+print(np.where(df['writing_score']>76))
+fig , ax = plt.subplots(figsize=(20,20))
+ax.scatter(df['writing_score'],df['reading_score'],df['placement_score'],df['placement_offer_count'])
+plt.show()
+z = np.abs(stats.zscore(df['writing_score']));
+sort =  sorted(df['writing_score'])
+q1 = np.percentile(sort,25)
+q3 = np.percentile(sort,75)
+iqr = q3-q1
+lwr = q1-(1.5 * iqr)
+lwr = q3+(1.5 * iqr)
+ndf = df
+ndf.plot(kind="hist")
+
+
+
+

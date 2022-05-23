@@ -1,0 +1,15 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+import numpy as np
+dataset = sns.load_dataset('titanic')
+dataset.head()
+sns.distplot(dataset['fare'])
+sns.displot(dataset.age, kde=True)
+sns.distplot(dataset.fare, kde=True, bins=50)
+sns.jointplot(x='age', y='fare', data=dataset)
+sns.jointplot(x='age', y='fare', data=dataset, kind='hex')
+sns.pairplot(dataset)
+dataset =dataset.dropna()
+sns.pairplot(dataset, hue='sex')
+sns.rugplot(dataset['fare'])

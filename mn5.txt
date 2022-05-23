@@ -1,0 +1,45 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
+df = pd.read_csv("Social_Network_Ads.csv");
+df.head()
+df.info()
+df.describe()
+plt.scatter(df['Age'],df['Purchased']);
+plt.xlabel('Age');
+plt.ylabel('Purchased');
+plt.show();
+xtrain,xtest,ytrain,ytest = train_test_split(df['Age'],df['Purchased']);
+model = LogisticRegression();
+model.fit(xtrain.values.reshape(-1,1),ytrain.values.reshape(-1,1).ravel());
+y_pred = model.predict(xtest.values.reshape(-1,1))
+plt.clf();
+plt.scatter(xtest,ytest);
+plt.scatter(xtest,y_pred,c="red");
+plt.show();
+tp,fp,fn,tn = confusion_matrix(ytest, y_pred).ravel();
+print(tp,fp,fn,tn);
+acc = (tp+tn)*100/ tp+fp+fn+tn;
+print(acc);
+err = (fp+fn)*100/ tp+fp+fn+tn;
+print(err);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

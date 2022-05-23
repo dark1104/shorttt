@@ -1,0 +1,18 @@
+import pandas as pd;
+import numpy as np;
+import matplotlib.pyplot as plt
+from sklearn import datasets 
+df = pd.read_csv("Iris.csv")
+print(df)
+print(df.Species.unique())
+print(df.groupby(df.Species))
+print(df.groupby(df.Species).max())
+print(df.groupby(df.Species).count())
+print(df.groupby(df.Species).min())
+print(df.groupby(df.Species).mean())
+print(df.groupby(df.Species).std())
+print(df.groupby(df.Species)["SepalLengthCm"].describe())
+
+
+
+

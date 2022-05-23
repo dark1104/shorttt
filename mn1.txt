@@ -1,0 +1,13 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import preprocessing
+df  = pd.read_csv('Iris.csv')
+df.head()
+df.tail()
+df.shape
+df.info()
+#print(df.isna().sum(axis=1))
+#df['SepalLengthCm'] = df['SepalLengthCm'].astype('float64').astype('object');
+new_df = pd.get_dummies(df['Species'].unique())
+print(new_df)
