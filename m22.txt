@@ -1,0 +1,53 @@
+
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv(r'C:\Users\Lenovo\Downloads\STUDENT_PERFORMANCE.csv')
+
+print(df)
+
+df.head()
+
+df.tail()
+
+df.info()
+
+df.shape
+
+df.describe()
+
+df.isnull()
+
+df.isnull().sum()
+
+col = ['reading_score', 'writing_score', 'placement_score', 'club_join_date', 'placement_offer_count']
+df.boxplot(col)
+
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots(figsize=(18, 10))
+ax.scatter(df['placement_score'], df['placement_offer_count'])
+plt.show()
+
+ndf = df
+print("Before filling null values")
+ndf.head(40)
+
+ndf = ndf.fillna(0)
+print("after filling null values")
+ndf.head(40)
+
+sample_outliers = [0, 1, 5, 7, 8]
+ndf = df
+print("Before Deleting")
+ndf.head(40)
+
+for i in sample_outliers:
+    ndf = ndf.drop(i)
+
+print("After Deleting")
+ndf.head(40)
+
+
+
+
+
